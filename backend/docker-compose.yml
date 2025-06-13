@@ -1,0 +1,110 @@
+---
+version: '3.8'
+
+networks:
+  cyberrisk:
+    external: true
+    name: cyberrisk
+
+x-common: &common
+  logging:
+    options:
+      max-file: "5"
+      max-size: 500m
+
+services:
+
+  #########
+  ## IMC ##
+  #########
+
+  imc-init:
+    <<: *common
+    image: artifactory.mnemonic.no/docker-mss/rnd/act-client:latest
+    depends_on:
+      - imc-platform
+    environment:
+      - no_proxy=imc-platform
+      - IMC_PLATFORM_HOST=imc-platform
+      - OBJECT_TYPES_FILE=/act/imc/object-types-imc.json
+      - FACT_TYPES_FILE=/act/imc/fact-types-imc.json
+      - META_FACT_TYPES_FILE=/act/imc/meta-fact-types-imc.json
+    command: /act/bin/init-types.sh
+    volumes:
+      - ./imc:/act/imc
+    networks:
+      - cyberrisk
+    deploy:
+      restart_policy:
+        condition: on-failure
+
+  imc-frontend:
+    <<: *common
+    image: artifactory.mnemonic.no/docker-mss/rnd/act-frontend:latest
+    environment:
+      - ACT_PLATFORM_HOST=imc-platform
+      - ACT_PLATFORM_PORT=8888
+    depends_on:
+      - imc-platform
+    networks:
+      - cyberrisk
+    ports:
+      - 8080:80
+
+  imc-platform:
+    <<: *common
+    image: artifactory.mnemonic.no/docker-mss/rnd/act-platform:0.0.115
+    depends_on:
+      - imc-cassandra
+      - imc-elasticsearch
+    networks:
+      - cyberrisk
+    environment:
+      API_CORS_ALLOWED_ORIGIN: 'https://cyberrisk-imc.mnemonic.no,https://osl-rnd-docker1.mnemonic.no,https://imc.rnd.mnemonic.no,http://localhost:8080'
+      CONFIGURE_ENV: 'true'
+      STARTUP_SLEEP: 0
+      API_SERVER_PORT: 8888
+      ACTION_TRIGGER_ENABLE: 'true'
+      # ACTION_TRIGGER_DIRECTORY: /home/act/trigger-imc
+      CASSANDRA_CONTACT_POINTS: imc-cassandra
+      ELASTICSEARCH_CONTACT_POINTS: imc-elasticsearch
+
+  imc-cassandra:
+    <<: *common
+    image: docker.io/cassandra:4.0.3
+    environment:
+      - CASSANDRA_NUM_TOKENS=16
+      - MAX_HEAP_SIZE=256M
+      - HEAP_NEWSIZE=128M
+    networks:
+      - cyberrisk
+    volumes:
+      - imc-cassandra-data:/var/lib/cassandra
+    cap_add:
+      - SYS_NICE  # CAP_SYS_NICE
+
+  imc-elasticsearch:
+    <<: *common
+    image: docker.io/elasticsearch:7.17.7
+    environment:
+      - node.name=imc-elasticsearch
+      - cluster.name=act
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - xpack.security.enabled=false
+      - ES_SETTING_INGEST_GEOIP_DOWNLOADER_ENABLED=false
+      - "ES_JAVA_OPTS=-Xms2048m -Xmx2048m"
+    networks:
+      - cyberrisk
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - imc-elasticsearch-data:/usr/share/elasticsearch/data
+
+volumes:
+  imc-cassandra-data:
+    driver: local
+  imc-elasticsearch-data:
+    driver: local

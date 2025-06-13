@@ -1,0 +1,14 @@
+[
+  {
+    "name": "file"
+  },
+  {
+    "name": "registry"
+  },
+  {
+    "name": "process"
+  }, 
+  {
+    "name": "network"
+  }
+]

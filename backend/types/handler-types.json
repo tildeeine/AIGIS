@@ -1,0 +1,84 @@
+{
+  "process_events": {
+    "fact_type": "createdProcess",
+    "source_type": "process",
+    "source_field": "parent_process_id",
+    "destination_type": "process",
+    "destination_field": "process_id",
+    "blacklist": [
+      "type"
+    ]
+  },
+  "file_events_read": {
+    "fact_type": "readFile",
+    "source_type": "process",
+    "source_field": "process_id",
+    "destination_type": "file",
+    "destination_field": "src_path",
+    "blacklist": [
+      "type",
+      "process_id",
+      "src_path"
+    ]
+  },
+  "file_events_write": {
+    "fact_type": "wroteFile",
+    "source_type": "process",
+    "source_field": "process_id",
+    "destination_type": "file",
+    "destination_field": "src_path",
+    "blacklist": [
+      "type",
+      "process_id",
+      "src_path"
+    ]
+  },
+  "file_events_delete": {
+    "fact_type": "deletedFile",
+    "source_type": "process",
+    "source_field": "process_id",
+    "destination_type": "file",
+    "destination_field": "src_path",
+    "blacklist": [
+      "type",
+      "process_id",
+      "src_path"
+    ]
+  },
+  "registry_events_read": {
+    "fact_type": "readRegistry",
+    "source_type": "process",
+    "source_field": "process_id",
+    "destination_type": "registry",
+    "destination_field": "path",
+    "blacklist": [
+      "type",
+      "process_id",
+      "path"
+    ]
+  },
+  "registry_events_write": {
+    "fact_type": "wroteRegistry",
+    "source_type": "process",
+    "source_field": "process_id",
+    "destination_type": "registry",
+    "destination_field": "path",
+    "blacklist": [
+      "type",
+      "process_id",
+      "path"
+    ]
+  },
+  "network_events": {
+    "fact_type": "connectedTo",
+    "source_type": "process",
+    "source_field": "process_id",
+    "destination_type": "network",
+    "destination_field": "dest_ip",
+    "blacklist": [
+      "type",
+      "process",
+      "dest_ip"
+    ]
+  }
+}

@@ -1,0 +1,68 @@
+[
+  {
+    "name": "createdProcess",
+    "objectBindings": [
+      {
+        "destinationObjectType": "process",
+        "sourceObjectType": "process"
+      }
+    ]
+  },
+  
+  {
+    "name": "readFile",
+    "objectBindings": [
+      {
+        "destinationObjectType": "file",
+        "sourceObjectType": "process"
+      }
+    ]
+  },
+  {
+    "name": "wroteFile",
+    "objectBindings": [
+      {
+        "destinationObjectType": "file",
+        "sourceObjectType": "process"
+      }
+    ]
+  },
+  {
+    "name": "deletedFile",
+    "objectBindings": [
+      {
+        "destinationObjectType": "file",
+        "sourceObjectType": "process"
+      }
+    ]
+  },
+  {
+    "name": "readRegistry",
+    "objectBindings": [
+      {
+        "destinationObjectType": "registry",
+        "sourceObjectType": "process"
+      }
+    ]
+  }, 
+  
+  {
+    "name": "wroteRegistry",
+    "objectBindings": [
+      {
+        "destinationObjectType": "registry",
+        "sourceObjectType": "process"
+      }
+    ]
+  }, 
+  
+  {
+    "name": "connectedTo",
+    "objectBindings": [
+      {
+        "destinationObjectType": "network",
+        "sourceObjectType": "process"
+      }
+    ]
+  }
+]

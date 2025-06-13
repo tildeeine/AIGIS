@@ -1,0 +1,228 @@
+
+[
+  {
+    "name" :"version", 
+    "relevantFactTypeBindings" : 
+    [
+      "createdProcess",
+      "readFile",
+      "wroteFile",
+      "readRegistry",
+      "wroteRegistry",
+      "connectedTo"
+    ]
+  },
+  {
+    "name": "timestamp", 
+    "relevantFactTypeBindings" : 
+    [
+      "createdProcess",
+      "readFile",
+      "wroteFile",
+      "readRegistry",
+      "wroteRegistry",
+      "connectedTo"
+    ]
+    },
+    {
+    "name": "original_sample",
+    "relevantFactTypeBindings" : 
+    [
+      "createdProcess"
+    ]
+  },
+  {
+    "name": "process_commandline",
+    "relevantFactTypeBindings" : 
+    [
+      "createdProcess"
+    ]
+  },
+  {
+    "name": "process_current_directory",
+    "relevantFactTypeBindings" : 
+    [
+      "createdProcess"
+    ]
+  },
+  {
+    "name": "process_guid",
+    "relevantFactTypeBindings" : 
+    [
+      "createdProcess"
+    ]
+  },
+  {
+    "name": "process_id",
+    "relevantFactTypeBindings" : 
+    [
+      "createdProcess"
+    ]
+  },
+  {
+    "name": "process_name",
+    "relevantFactTypeBindings" : 
+    [
+      "createdProcess"
+    ]
+  },
+  {
+    "name": "process_path",
+    "relevantFactTypeBindings" : 
+    [
+      "createdProcess"
+    ]
+  },
+  {
+    "name": "process_username",
+    "relevantFactTypeBindings" : 
+    [
+      "createdProcess"
+    ]
+  },
+  {
+    "name": "parent_process_commandline",
+    "relevantFactTypeBindings" : 
+    [
+      "createdProcess"
+    ]
+  },
+  {
+    "name": "parent_process_current_directory",
+    "relevantFactTypeBindings" : 
+    [
+      "createdProcess"
+    ]
+  },
+  {
+    "name": "parent_process_guid",
+    "relevantFactTypeBindings" : 
+    [
+      "createdProcess"
+    ]
+  },
+  {
+    "name": "parent_process_id",
+    "relevantFactTypeBindings" : 
+    [
+      "createdProcess"
+    ]
+  },
+  {
+    "name": "parent_process_name",
+    "relevantFactTypeBindings" : 
+    [
+      "createdProcess"
+    ]
+  },
+  {
+    "name": "parent_process_path",
+    "relevantFactTypeBindings" : 
+    [
+      "createdProcess"
+    ]
+  },
+  {
+    "name": "parent_process_username",
+    "relevantFactTypeBindings" : 
+    [
+      "createdProcess"
+    ]
+  },
+  {
+    "name": "count",
+    "relevantFactTypeBindings" : 
+    [
+      "createdProcess",
+      "readFile",
+      "wroteFile",
+      "readRegistry",
+      "wroteRegistry",
+      "connectedTo"
+    ]
+  },
+  {
+    "name": "dest_ip",
+    "relevantFactTypeBindings" : 
+    [
+      "connectedTo"
+    ]
+  },
+  {
+    "name": "dest_port",
+    "relevantFactTypeBindings" : 
+    [
+      "connectedTo"
+    ]
+  },
+  {
+    "name": "proto",
+    "relevantFactTypeBindings" : 
+    [
+      "connectedTo"
+    ]
+  },
+  {
+    "name": "proto_id",
+    "relevantFactTypeBindings" : 
+    [
+      "connectedTo"
+    ]
+  },
+  {
+    "name": "src_ip",
+    "relevantFactTypeBindings" : 
+    [
+      "connectedTo"
+    ]
+  },
+  {
+    "name": "src_port",
+    "relevantFactTypeBindings" : 
+    [
+      "connectedTo"
+    ]
+  },
+  {
+    "name": "path",
+    "relevantFactTypeBindings" : 
+    [
+      "readRegistry",
+      "wroteRegistry"
+    ]
+  },
+  {
+    "name": "operation",
+    "relevantFactTypeBindings" : 
+    [
+      "readFile",
+      "wroteFile", 
+      "readRegistry",
+      "wroteRegistry"
+    ]
+  },
+  {
+    "name": "value",
+    "relevantFactTypeBindings" : 
+    [
+      "readRegistry",
+      "wroteRegistry"
+    ]
+  },
+  {
+    "name": "src_path",
+    "relevantFactTypeBindings" : 
+    [
+      "readFile",
+      "wroteFile"
+    ]
+  },
+  {
+    "name": "dest_path",
+    "relevantFactTypeBindings" : 
+    [
+      "readFile",
+      "wroteFile"
+    ]
+  }
+]
